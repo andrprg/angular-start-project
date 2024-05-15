@@ -1,0 +1,50 @@
+@if (errors$ | async; as errors) {
+  <div class="container errors-container">
+    @for (error of errors; track $index) {
+      <div class="container__item errors-container__item">
+        <mat-icon>error</mat-icon>
+        <span class="container__title">Error: </span>
+        {{ error }}
+      </div>
+    }
+    <mat-icon
+      class="container__close errors-container__close"
+      (click)="onClose('error')"
+      >close</mat-icon
+    >
+  </div>
+}
+
+@if (warns$ | async; as warns) {
+  <div class="container warns-container">
+    @for (warn of warns; track $index) {
+      <div class="container__item warns-container__item">
+        <mat-icon>warning</mat-icon>
+        <span class="container__title">Warning: </span>
+        {{ warn }}
+      </div>
+    }
+    <mat-icon
+      class="container__close warns-container__close"
+      (click)="onClose('warn')"
+      >close</mat-icon
+    >
+  </div>
+}
+
+@if (messages$ | async; as messages) {
+  <div class="container messages-container">
+    @for (message of messages; track $index) {
+      <div class="container__item messages-container__item">
+        <mat-icon>done</mat-icon>
+        <span class="container__title">Success: </span>
+        {{ message }}
+      </div>
+    }
+    <mat-icon
+      class="container__close messages-container__close"
+      (click)="onClose('message')"
+      >close</mat-icon
+    >
+  </div>
+}
